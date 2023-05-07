@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import Axios from 'axios';
+import React, { useState, useEffect } from "react";
 import './App.css';
+import { BrowserRouter, Routes, Route, BrowserRouter as Router, useNavigate, Navigate } from 'react-router-dom';
+import Login from './Login';
+import Quizscreen from './components/quizscreen';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  
+  let isAccountVerified = false;
+  let nav = useNavigate();
 
+  const accountVerified = () => {
+    isAccountVerified = true;
+    console.log("truei");
+    nav("/quiz");
+  }
+
+  return (
+    <div className='App'>
+      <Routes>
+        <Route exact path='/' element={<Login accountVerified={accountVerified} />}/>
+        <Route path='/quiz' element={<Quizscreen />}/>
+      </Routes>
+    </div>
+  )
+}
 export default App;
