@@ -8,6 +8,7 @@ import Quizscreen from './components/quizscreen';
 
 function App() {
   
+  
   let isAccountVerified = false;
   let nav = useNavigate();
 
